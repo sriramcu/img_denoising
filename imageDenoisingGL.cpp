@@ -484,6 +484,7 @@ void runAutoTest(int argc, char **argv, const char *filename,
 int main(int argc, char **argv) {
   g_Kernel = atoi(argv[1]);
   char *dump_file = NULL;
+  strcpy(dump_file, sReference[g_Kernel]);
   dump_file[0] = 'M';
   printf("%s",dump_file);
 #if defined(__linux__)
