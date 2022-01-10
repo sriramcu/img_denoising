@@ -437,7 +437,7 @@ void runAutoTest(int argc, char **argv, const char *filename,
   // imageH)
   printf("Allocating host and CUDA memory and loading image file...\n");
   //const char *image_path = sdkFindFilePath("portrait_noise.bmp", argv[0]);
-  const char *image_path = sdkFindFilePath(argv[1], argv[0]);
+  const char *image_path = sdkFindFilePath(argv[2], argv[0]);
 
 
   if (image_path == NULL) {
