@@ -470,7 +470,7 @@ void runAutoTest(int argc, char **argv, const char *filename,
                                cudaMemcpyDeviceToHost));
     
 
-    char final_filename[100] = "data/";
+    char final_filename[100] = "custom_output/";
     strcat(final_filename,filename);
     sdkSavePPM4ub(final_filename, h_dst, imageW, imageH);
   }
