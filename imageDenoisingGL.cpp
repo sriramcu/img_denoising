@@ -482,6 +482,7 @@ void runAutoTest(int argc, char **argv, const char *filename,
 }
 
 int main(int argc, char **argv) {
+  printf("%s %s\n",argv[0],argv[1]);
   char *dump_file = NULL;
 
 #if defined(__linux__)

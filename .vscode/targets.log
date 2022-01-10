@@ -1,10 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
->>> WARNING - libGL.so not found, refer to CUDA Getting Started Guide for how to find and install them. <<<
->>> WARNING - libGLU.so not found, refer to CUDA Getting Started Guide for how to find and install them. <<<
- 
->>> WARNING - gl.h not found, refer to CUDA Getting Started Guide for how to find and install them. <<<
->>> WARNING - glu.h not found, refer to CUDA Getting Started Guide for how to find and install them. <<<
- 
 >>> GCC Version is greater or equal to 5.1.0 <<<
  
 # GNU Make 4.1
@@ -14,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jan 10 20:19:48 2022
+# Make data base, printed on Mon Jan 10 20:37:32 2022
 
 # Variables
 
@@ -31,7 +25,7 @@ DESKTOP_SESSION = mate
 # makefile (from 'Makefile', line 344)
 GENCODE_FLAGS = -gencode arch=compute_35,code=sm_35 -gencode arch=compute_37,code=sm_37 -gencode arch=compute_50,code=sm_50 -gencode arch=compute_52,code=sm_52 -gencode arch=compute_60,code=sm_60 -gencode arch=compute_61,code=sm_61 -gencode arch=compute_70,code=sm_70 -gencode arch=compute_75,code=sm_75 -gencode arch=compute_80,code=sm_80 -gencode arch=compute_86,code=sm_86 -gencode arch=compute_$(HIGHEST_SM),code=compute_$(HIGHEST_SM)
 # makefile (from 'findgllib.mk', line 113)
-GLULIB := 
+GLULIB := /usr/lib/x86_64-linux-gnu/libGLU.so
 # environment
 XDG_SESSION_TYPE = x11
 # environment
@@ -69,7 +63,6 @@ QT_AUTO_SCREEN_SCALE_FACTOR = 0
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-mate:/etc/xdg
 # environment
- 
 GTK_OVERLAY_SCROLLING = 0
 # makefile (from 'findgllib.mk', line 1)
 MAKEFILE_LIST :=  Makefile findgllib.mk
@@ -134,7 +127,8 @@ VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"
 # makefile (from 'Makefile', line 165)
 LDFLAGS := 
 # makefile (from 'findgllib.mk', line 112)
-GLLIB := 
+GLLIB := /usr/lib/x86_64-linux-gnu/libGL.so
+ 
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # makefile (from 'Makefile', line 348)
@@ -182,13 +176,13 @@ VSCODE_CLI = 1
 # environment
 VSCODE_CODE_CACHE_PATH = /home/sriram/.config/Code/CachedData/899d46d82c4c95423fb7e10e68eba52050e30ba3
 # makefile (from 'findgllib.mk', line 132)
-GLUHEADER := 
+GLUHEADER := /usr/include/GL/glu.h
 # environment
 LOGNAME = sriram
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
-# makefile (from 'findgllib.mk', line 140)
-SAMPLE_ENABLED := 0
+# makefile (from 'Makefile', line 266)
+SAMPLE_ENABLED := 1
 # environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
@@ -213,8 +207,6 @@ SHLVL = 2
 VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-d632246c-6315-4520-93a2-14b839eabeb7.sock
 # environment
 COMPIZ_CONFIG_PROFILE = mate
-# makefile (from 'Makefile', line 351)
-EXEC = @echo "[@]"
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -227,7 +219,6 @@ HOST_OS := linux
 XDG_CURRENT_DESKTOP = MATE
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
- 
 # makefile (from 'Makefile', line 110)
 TARGET_OS = $(HOST_OS)
 # default
@@ -283,11 +274,11 @@ SUSE = $(shell echo $(DISTRO) | grep -i 'suse\|sles' >/dev/null 2>&1; echo $$?)
 # environment
 LC_ALL = C
 # makefile (from 'Makefile', line 297)
-LIBRARIES :=  -L/usr/lib/nvidia-prime -lGL -lGLU -lglut
+LIBRARIES :=  -L/usr/lib/nvidia-prime -lGL -lGLU -lglut -lGLdispatch
 # makefile (from 'Makefile', line 74)
 TARGET_ARCH = $(HOST_ARCH)
 # makefile (from 'findgllib.mk', line 131)
-GLHEADER := 
+GLHEADER := /usr/include/GL/gl.h
 # automatic
 ^F = $(notdir $^)
 # makefile (from 'Makefile', line 257)
@@ -313,7 +304,7 @@ ALL_LDFLAGS :=   -m64
 # environment
 VSCODE_PID = 16733
 # variable set hash-table stats:
-# Load=146/1024=14%, Rehash=0, Collisions=33/470=7%
+# Load=145/1024=14%, Rehash=0, Collisions=33/464=7%
 
 # Pattern-specific Variable Values
 
@@ -321,9 +312,9 @@ VSCODE_PID = 16733
 
 # Directories
 
-# . (device 2069, inode 5770772): 24 files, no impossibilities.
+# . (device 2069, inode 5770772): 25 files, no impossibilities.
 
-# 24 files, no impossibilities in 1 directories.
+# 25 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -334,6 +325,7 @@ VSCODE_PID = 16733
 # Not a target:
 bmploader.cpp:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2022-01-10 19:48:32.428862912
 #  File has been updated.
 #  Successfully updated.
@@ -356,7 +348,7 @@ all: build
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-10 19:52:57.176758593
+#  Last modified 2022-01-10 20:33:17.119655163
 #  File has been updated.
 #  Successfully updated.
 
@@ -418,7 +410,6 @@ bmploader.o: bmploader.cpp
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 run: build
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -438,8 +429,8 @@ check.deps:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 363):
-	@echo "Sample will be waived due to the above missing dependencies"
+#  recipe to execute (from 'Makefile', line 365):
+	@echo "Sample is ready - all dependencies have been met"
 
 # Not a target:
 findgllib.mk:
@@ -482,12 +473,12 @@ imageDenoising.o: imageDenoising.cu
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 38 / storage = 504 B / avg = 13 B
-# current buf: size = 8162 B / used = 504 B / count = 38 / avg = 13 B
+# strcache buffers: 1 (0) / strings = 39 / storage = 516 B / avg = 13 B
+# current buf: size = 8162 B / used = 516 B / count = 39 / avg = 13 B
 
-# strcache performance: lookups = 66 / hit rate = 42%
+# strcache performance: lookups = 67 / hit rate = 41%
 # hash-table stats:
-# Load=38/8192=0%, Rehash=0, Collisions=1/66=2%
-# Finished Make data base on Mon Jan 10 20:19:48 2022
+# Load=39/8192=0%, Rehash=0, Collisions=1/67=1%
+# Finished Make data base on Mon Jan 10 20:37:32 2022
 
  
