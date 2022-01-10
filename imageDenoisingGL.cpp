@@ -468,7 +468,11 @@ void runAutoTest(int argc, char **argv, const char *filename,
 
     checkCudaErrors(cudaMemcpy(h_dst, d_dst, imageW * imageH * sizeof(TColor),
                                cudaMemcpyDeviceToHost));
-    sdkSavePPM4ub(filename, h_dst, imageW, imageH);
+    
+
+    char final_filename[100] = "data/";
+    strcat(final_filename,filename);
+    sdkSavePPM4ub(final_filename, h_dst, imageW, imageH);
   }
 
   checkCudaErrors(CUDA_FreeArray());
@@ -488,7 +492,7 @@ int main(int argc, char **argv) {
   g_Kernel = strtol(argv[1], &ptr, 10);
   char dump_file[100] = "";
   strcpy(dump_file, sReference[g_Kernel]);
-  dump_file[0] = 'M';
+  dump_file[0] = 'R';
   printf("%s\n",dump_file);
 #if defined(__linux__)
   setenv("DISPLAY", ":0", 0);
