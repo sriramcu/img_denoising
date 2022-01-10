@@ -14,7 +14,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jan 10 15:59:14 2022
+# Make data base, printed on Mon Jan 10 20:19:48 2022
 
 # Variables
 
@@ -28,7 +28,7 @@ CENTOS = $(shell echo $(DISTRO) | grep -i centos      >/dev/null 2>&1; echo $$?)
 DESKTOP_SESSION = mate
 # default
 .SHELLFLAGS := -c
-# makefile (from 'Makefile', line 343)
+# makefile (from 'Makefile', line 344)
 GENCODE_FLAGS = -gencode arch=compute_35,code=sm_35 -gencode arch=compute_37,code=sm_37 -gencode arch=compute_50,code=sm_50 -gencode arch=compute_52,code=sm_52 -gencode arch=compute_60,code=sm_60 -gencode arch=compute_61,code=sm_61 -gencode arch=compute_70,code=sm_70 -gencode arch=compute_75,code=sm_75 -gencode arch=compute_80,code=sm_80 -gencode arch=compute_86,code=sm_86 -gencode arch=compute_$(HIGHEST_SM),code=compute_$(HIGHEST_SM)
 # makefile (from 'findgllib.mk', line 113)
 GLULIB := 
@@ -38,8 +38,8 @@ XDG_SESSION_TYPE = x11
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# makefile (from 'Makefile', line 280)
-INCLUDES := -I../../Common
+# makefile (from 'Makefile', line 281)
+INCLUDES := -I. 
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -69,6 +69,7 @@ QT_AUTO_SCREEN_SCALE_FACTOR = 0
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-mate:/etc/xdg
 # environment
+ 
 GTK_OVERLAY_SCROLLING = 0
 # makefile (from 'findgllib.mk', line 1)
 MAKEFILE_LIST :=  Makefile findgllib.mk
@@ -86,10 +87,9 @@ NVCCFLAGS := -m64
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
- 
 # environment
 QT_SCALE_FACTOR = 1
-# makefile (from 'Makefile', line 314)
+# makefile (from 'Makefile', line 315)
 IS_MIN_VERSION := 1
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
@@ -109,7 +109,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 DISTRO := ubuntu
 # environment
 SESSION_MANAGER = local/sriram-ThinkPad-E490:@/tmp/.ICE-unix/1456,unix/sriram-ThinkPad-E490:/tmp/.ICE-unix/1456
-# makefile (from 'Makefile', line 302)
+# makefile (from 'Makefile', line 303)
 space := $(subst ,, )
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
@@ -123,7 +123,7 @@ GLPATH = /usr/lib/$(UBUNTU_PKG_NAME)
 UBUNTU = $(shell echo $(DISTRO) | grep -i ubuntu      >/dev/null 2>&1; echo $$?)
 # makefile (from 'findgllib.mk', line 81)
 UBUNTU_PKG_NAME = $(shell which dpkg >/dev/null 2>&1 && dpkg -l 'nvidia-*' | grep '^ii' | awk '{print $$2}' | head -1)
-# makefile (from 'Makefile', line 301)
+# makefile (from 'Makefile', line 302)
 empty := 
 # makefile (from 'Makefile', line 164)
 CCFLAGS := 
@@ -137,7 +137,7 @@ LDFLAGS :=
 GLLIB := 
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# makefile (from 'Makefile', line 347)
+# makefile (from 'Makefile', line 348)
 ALL_CCFLAGS :=  -m64    --threads 0 --std=c++11
 # environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/sriram
@@ -153,7 +153,7 @@ SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 DISPLAY = :0.0
 # environment
 VSCODE_PIPE_LOGGING = true
-# makefile (from 'Makefile', line 303)
+# makefile (from 'Makefile', line 304)
 GCCVERSIONSTRING := 7
 # makefile (from 'Makefile', line 233)
 CUDA_INSTALL_TARGET_DIR := 
@@ -161,7 +161,7 @@ CUDA_INSTALL_TARGET_DIR :=
 PWD = /home/sriram/imageDenoising
 # environment
 QT_QPA_PLATFORMTHEME = gtk2
-# makefile (from 'Makefile', line 311)
+# makefile (from 'Makefile', line 312)
 GCCVERSION := 77700
 # environment
 XDG_SEAT = seat0
@@ -213,7 +213,7 @@ SHLVL = 2
 VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-d632246c-6315-4520-93a2-14b839eabeb7.sock
 # environment
 COMPIZ_CONFIG_PROFILE = mate
-# makefile (from 'Makefile', line 350)
+# makefile (from 'Makefile', line 351)
 EXEC = @echo "[@]"
 # environment
 XDG_SESSION_ID = c2
@@ -227,13 +227,14 @@ HOST_OS := linux
 XDG_CURRENT_DESKTOP = MATE
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
+ 
 # makefile (from 'Makefile', line 110)
 TARGET_OS = $(HOST_OS)
 # default
 MAKE_COMMAND := make
 # environment
 OLDPWD = /home/sriram
-# makefile (from 'Makefile', line 328)
+# makefile (from 'Makefile', line 329)
 SMS = 35 37 50 52 60 61 70 75 80 86
 # default
 .VARIABLES := 
@@ -263,7 +264,7 @@ GDK_BACKEND = x11
 DFLT_PATH = /usr/lib
 # environment
 QT_ACCESSIBILITY = 1
-# makefile (from 'Makefile', line 341)
+# makefile (from 'Makefile', line 342)
 HIGHEST_SM := 86
 # makefile (from 'findgllib.mk', line 57)
 FEDORA = $(shell echo $(DISTRO) | grep -i fedora      >/dev/null 2>&1; echo $$?)
@@ -281,7 +282,7 @@ ELECTRON_RUN_AS_NODE = 1
 SUSE = $(shell echo $(DISTRO) | grep -i 'suse\|sles' >/dev/null 2>&1; echo $$?)
 # environment
 LC_ALL = C
-# makefile (from 'Makefile', line 296)
+# makefile (from 'Makefile', line 297)
 LIBRARIES :=  -L/usr/lib/nvidia-prime -lGL -lGLU -lglut
 # makefile (from 'Makefile', line 74)
 TARGET_ARCH = $(HOST_ARCH)
@@ -320,9 +321,9 @@ VSCODE_PID = 16733
 
 # Directories
 
-# . (device 2069, inode 5770772): 17 files, no impossibilities.
+# . (device 2069, inode 5770772): 24 files, no impossibilities.
 
-# 17 files, no impossibilities in 1 directories.
+# 24 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -333,7 +334,7 @@ VSCODE_PID = 16733
 # Not a target:
 bmploader.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-10-21 16:34:49
+#  Last modified 2022-01-10 19:48:32.428862912
 #  File has been updated.
 #  Successfully updated.
 
@@ -355,7 +356,7 @@ all: build
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-10-21 16:34:49
+#  Last modified 2022-01-10 19:52:57.176758593
 #  File has been updated.
 #  Successfully updated.
 
@@ -365,7 +366,6 @@ build: imageDenoising
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
- 
 # Load=0/32=0%, Rehash=0, Collisions=0/10=0%
 
 # Not a target:
@@ -409,7 +409,7 @@ bmploader.o: bmploader.cpp
 # ? := bmploader.cpp
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=4/20=20%
-#  recipe to execute (from 'Makefile', line 368):
+#  recipe to execute (from 'Makefile', line 369):
 	$(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
 
 # Not a target:
@@ -418,18 +418,19 @@ bmploader.o: bmploader.cpp
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 run: build
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 382):
+#  recipe to execute (from 'Makefile', line 383):
 	$(EXEC) ./imageDenoising
 
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 385):
+#  recipe to execute (from 'Makefile', line 386):
 	rm -f imageDenoising bmploader.o imageDenoising.o imageDenoisingGL.o
 	rm -rf ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)/imageDenoising
 
@@ -437,7 +438,7 @@ check.deps:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 362):
+#  recipe to execute (from 'Makefile', line 363):
 	@echo "Sample will be waived due to the above missing dependencies"
 
 # Not a target:
@@ -451,7 +452,7 @@ imageDenoisingGL.o: imageDenoisingGL.cpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 374):
+#  recipe to execute (from 'Makefile', line 375):
 	$(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
 
 imageDenoising: bmploader.o imageDenoising.o imageDenoisingGL.o
@@ -461,7 +462,7 @@ imageDenoising: bmploader.o imageDenoising.o imageDenoisingGL.o
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/10=0%
-#  recipe to execute (from 'Makefile', line 377):
+#  recipe to execute (from 'Makefile', line 378):
 	$(EXEC) $(NVCC) $(ALL_LDFLAGS) $(GENCODE_FLAGS) -o $@ $+ $(LIBRARIES)
 	$(EXEC) mkdir -p ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)
 	$(EXEC) cp $@ ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)
@@ -470,7 +471,7 @@ imageDenoising.o: imageDenoising.cu
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 371):
+#  recipe to execute (from 'Makefile', line 372):
 	$(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
 
 # files hash-table stats:
@@ -481,12 +482,12 @@ imageDenoising.o: imageDenoising.cu
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 31 / storage = 408 B / avg = 13 B
-# current buf: size = 8162 B / used = 408 B / count = 31 / avg = 13 B
+# strcache buffers: 1 (0) / strings = 38 / storage = 504 B / avg = 13 B
+# current buf: size = 8162 B / used = 504 B / count = 38 / avg = 13 B
 
-# strcache performance: lookups = 59 / hit rate = 47%
+# strcache performance: lookups = 66 / hit rate = 42%
 # hash-table stats:
-# Load=31/8192=0%, Rehash=0, Collisions=1/59=2%
-# Finished Make data base on Mon Jan 10 15:59:14 2022
+# Load=38/8192=0%, Rehash=0, Collisions=1/66=2%
+# Finished Make data base on Mon Jan 10 20:19:48 2022
 
  
