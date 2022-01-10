@@ -32,20 +32,16 @@ const char *sOriginal[] = {"image_passthru.ppm", "image_knn.ppm",
 const char *sReference[] = {"ref_passthru.ppm", "ref_knn.ppm", "ref_nlm.ppm",
                             "ref_nlm2.ppm", NULL};
 
-////////////////////////////////////////////////////////////////////////////////
-// Global data handlers and parameters
-////////////////////////////////////////////////////////////////////////////////
-// OpenGL PBO and texture "names"
+
 GLuint gl_PBO, gl_Tex;
+
 struct cudaGraphicsResource *cuda_pbo_resource;  // handles OpenGL-CUDA exchange
 // Source image on the host side
 uchar4 *h_Src;
 int imageW, imageH;
 GLuint shader;
 
-////////////////////////////////////////////////////////////////////////////////
-// Main program
-////////////////////////////////////////////////////////////////////////////////
+
 int g_Kernel = 0;
 bool g_FPS = false;
 bool g_Diag = false;
