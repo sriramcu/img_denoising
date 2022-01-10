@@ -533,12 +533,15 @@ int main(int argc, char **argv) {
     LoadBMPFile(&h_Src, &imageW, &imageH, image_path);
     printf("Data init done.\n");
 
-    initGL(&argc, argv);
+    //initGL(&argc, argv);
     findCudaDevice(argc, (const char **)argv);
 
     checkCudaErrors(CUDA_MallocArray(&h_Src, imageW, imageH));
 
-    initOpenGLBuffers();
+    //initOpenGLBuffers();
+    TColor *d_dst = NULL;
+    runImageFilters(d_dst);
+    
   }
 
   printf("Starting GLUT main loop...\n");
