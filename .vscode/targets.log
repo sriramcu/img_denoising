@@ -1,0 +1,492 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+>>> WARNING - libGL.so not found, refer to CUDA Getting Started Guide for how to find and install them. <<<
+>>> WARNING - libGLU.so not found, refer to CUDA Getting Started Guide for how to find and install them. <<<
+ 
+>>> WARNING - gl.h not found, refer to CUDA Getting Started Guide for how to find and install them. <<<
+>>> WARNING - glu.h not found, refer to CUDA Getting Started Guide for how to find and install them. <<<
+ 
+>>> GCC Version is greater or equal to 5.1.0 <<<
+ 
+# GNU Make 4.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2014 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Mon Jan 10 15:59:14 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile (from 'findgllib.mk', line 59)
+CENTOS = $(shell echo $(DISTRO) | grep -i centos      >/dev/null 2>&1; echo $$?)
+# environment
+DESKTOP_SESSION = mate
+# default
+.SHELLFLAGS := -c
+# makefile (from 'Makefile', line 343)
+GENCODE_FLAGS = -gencode arch=compute_35,code=sm_35 -gencode arch=compute_37,code=sm_37 -gencode arch=compute_50,code=sm_50 -gencode arch=compute_52,code=sm_52 -gencode arch=compute_60,code=sm_60 -gencode arch=compute_61,code=sm_61 -gencode arch=compute_70,code=sm_70 -gencode arch=compute_75,code=sm_75 -gencode arch=compute_80,code=sm_80 -gencode arch=compute_86,code=sm_86 -gencode arch=compute_$(HIGHEST_SM),code=compute_$(HIGHEST_SM)
+# makefile (from 'findgllib.mk', line 113)
+GLULIB := 
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from 'Makefile', line 280)
+INCLUDES := -I../../Common
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /home/sriram/.Xauthority
+# environment
+GDMSESSION = mate
+# default
+MAKE_VERSION := 4.1
+# makefile
+CURDIR := /home/sriram/imageDenoising
+# makefile (from 'findgllib.mk', line 84)
+GLLINK = -L/usr/lib/$(UBUNTU_PKG_NAME)
+# makefile
+SHELL = /bin/sh
+# environment
+GDM_LANG = en_US
+# environment
+VTE_VERSION = 5202
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
+# makefile (from 'Makefile', line 83)
+TARGET_SIZE := 64
+# environment
+_ = /usr/bin/code
+# environment
+QT_AUTO_SCREEN_SCALE_FACTOR = 0
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-mate:/etc/xdg
+# environment
+GTK_OVERLAY_SCROLLING = 0
+# makefile (from 'findgllib.mk', line 1)
+MAKEFILE_LIST :=  Makefile findgllib.mk
+# makefile (from 'Makefile', line 160)
+NVCC := /usr/local/cuda/bin/nvcc -ccbin g++
+# automatic
+@F = $(notdir $@)
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+XDG_DATA_DIRS = /usr/share/mate:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# makefile (from 'Makefile', line 163)
+NVCCFLAGS := -m64
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# environment
+VSCODE_VERBOSE_LOGGING = true
+ 
+# environment
+QT_SCALE_FACTOR = 1
+# makefile (from 'Makefile', line 314)
+IS_MIN_VERSION := 1
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+VSCODE_CWD = /home/sriram/imageDenoising
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/sriram/Downloads/pycharm-community-2021.3.1/bin:/home/sriram/Downloads/pycharm-community-2021.3.1/bin
+# makefile (from 'findgllib.mk', line 124)
+HEADER_SEARCH_PATH = $(TARGET_FS)/usr/include
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# makefile (from 'findgllib.mk', line 38)
+DISTRO := ubuntu
+# environment
+SESSION_MANAGER = local/sriram-ThinkPad-E490:@/tmp/.ICE-unix/1456,unix/sriram-ThinkPad-E490:/tmp/.ICE-unix/1456
+# makefile (from 'Makefile', line 302)
+space := $(subst ,, )
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+WINDOWID = 60817779
+# environment
+UBUNTU_MENUPROXY = 1
+# makefile (from 'findgllib.mk', line 83)
+GLPATH = /usr/lib/$(UBUNTU_PKG_NAME)
+# makefile (from 'findgllib.mk', line 56)
+UBUNTU = $(shell echo $(DISTRO) | grep -i ubuntu      >/dev/null 2>&1; echo $$?)
+# makefile (from 'findgllib.mk', line 81)
+UBUNTU_PKG_NAME = $(shell which dpkg >/dev/null 2>&1 && dpkg -l 'nvidia-*' | grep '^ii' | awk '{print $$2}' | head -1)
+# makefile (from 'Makefile', line 301)
+empty := 
+# makefile (from 'Makefile', line 164)
+CCFLAGS := 
+# environment
+VSCODE_LOG_STACK = false
+# environment
+VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=3fb89862-c164-4bf8-81b1-01ca89e49ad9&iid=3fb89862-c164-4bf8-81b1-01ca89e49ad9&sid=3fb89862-c164-4bf8-81b1-01ca89e49ad9","uploadToServer":true}
+# makefile (from 'Makefile', line 165)
+LDFLAGS := 
+# makefile (from 'findgllib.mk', line 112)
+GLLIB := 
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile', line 347)
+ALL_CCFLAGS :=  -m64    --threads 0 --std=c++11
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/sriram
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# environment
+XDG_SESSION_DESKTOP = mate
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0.0
+# environment
+VSCODE_PIPE_LOGGING = true
+# makefile (from 'Makefile', line 303)
+GCCVERSIONSTRING := 7
+# makefile (from 'Makefile', line 233)
+CUDA_INSTALL_TARGET_DIR := 
+# environment
+PWD = /home/sriram/imageDenoising
+# environment
+QT_QPA_PLATFORMTHEME = gtk2
+# makefile (from 'Makefile', line 311)
+GCCVERSION := 77700
+# environment
+XDG_SEAT = seat0
+# environment
+SSH_AGENT_PID = 1779
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = MATE
+# environment
+GTK_MODULES = appmenu-gtk-module:gail:atk-bridge:canberra-gtk-module
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /home/sriram
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /home/sriram/.config/Code/CachedData/899d46d82c4c95423fb7e10e68eba52050e30ba3
+# makefile (from 'findgllib.mk', line 132)
+GLUHEADER := 
+# environment
+LOGNAME = sriram
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# makefile (from 'findgllib.mk', line 140)
+SAMPLE_ENABLED := 0
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XDG_VTNR = 7
+# environment
+MAKELEVEL := 0
+# makefile (from 'Makefile', line 159)
+HOST_COMPILER = g++
+# environment
+COLORTERM = truecolor
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 2
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-d632246c-6315-4520-93a2-14b839eabeb7.sock
+# environment
+COMPIZ_CONFIG_PROFILE = mate
+# makefile (from 'Makefile', line 350)
+EXEC = @echo "[@]"
+# environment
+XDG_SESSION_ID = c2
+# environment
+USER = sriram
+# makefile (from 'Makefile', line 109)
+HOST_OS := linux
+# makefile
+.DEFAULT_GOAL := all
+# environment
+XDG_CURRENT_DESKTOP = MATE
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# makefile (from 'Makefile', line 110)
+TARGET_OS = $(HOST_OS)
+# default
+MAKE_COMMAND := make
+# environment
+OLDPWD = /home/sriram
+# makefile (from 'Makefile', line 328)
+SMS = 35 37 50 52 60 61 70 75 80 86
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+LANGUAGE = en_IN:en
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-36d9d2ed-1.63.2-main.sock
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+BREAKPAD_DUMP_LOCATION = /home/sriram/.config/Code/exthost Crash Reports
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# automatic
++F = $(notdir $+)
+# makefile (from 'findgllib.mk', line 87)
+DFLT_PATH = /usr/lib
+# environment
+QT_ACCESSIBILITY = 1
+# makefile (from 'Makefile', line 341)
+HIGHEST_SM := 86
+# makefile (from 'findgllib.mk', line 57)
+FEDORA = $(shell echo $(DISTRO) | grep -i fedora      >/dev/null 2>&1; echo $$?)
+# default
+MAKEFILES := 
+# makefile (from 'Makefile', line 73)
+HOST_ARCH := x86_64
+# automatic
+<F = $(notdir $<)
+# makefile (from 'findgllib.mk', line 58)
+RHEL = $(shell echo $(DISTRO) | grep -i 'red\|rhel' >/dev/null 2>&1; echo $$?)
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# makefile (from 'findgllib.mk', line 60)
+SUSE = $(shell echo $(DISTRO) | grep -i 'suse\|sles' >/dev/null 2>&1; echo $$?)
+# environment
+LC_ALL = C
+# makefile (from 'Makefile', line 296)
+LIBRARIES :=  -L/usr/lib/nvidia-prime -lGL -lGLU -lglut
+# makefile (from 'Makefile', line 74)
+TARGET_ARCH = $(HOST_ARCH)
+# makefile (from 'findgllib.mk', line 131)
+GLHEADER := 
+# automatic
+^F = $(notdir $^)
+# makefile (from 'Makefile', line 257)
+BUILD_TYPE := release
+# makefile (from 'Makefile', line 35)
+CUDA_PATH = /usr/local/cuda
+# default
+SUFFIXES := 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+MATE_DESKTOP_SESSION_ID = this-is-deprecated
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# default
+.RECIPEPREFIX := 
+# environment
+LANG = C
+# environment
+TERM = xterm
+# makefile (from 'Makefile', line 277)
+ALL_LDFLAGS :=   -m64     
+# environment
+VSCODE_PID = 16733
+# variable set hash-table stats:
+# Load=146/1024=14%, Rehash=0, Collisions=33/470=7%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2069, inode 5770772): 17 files, no impossibilities.
+
+# 17 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+bmploader.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-21 16:34:49
+#  File has been updated.
+#  Successfully updated.
+
+all: build
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/10=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-21 16:34:49
+#  File has been updated.
+#  Successfully updated.
+
+build: imageDenoising
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+ 
+# Load=0/32=0%, Rehash=0, Collisions=0/10=0%
+
+# Not a target:
+imageDenoisingGL.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clobber: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+imageDenoising.cu:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+bmploader.o: bmploader.cpp
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := bmploader.o
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := bmploader.cpp
+# automatic
+# | := 
+# automatic
+# < := bmploader.cpp
+# automatic
+# ^ := bmploader.cpp
+# automatic
+# ? := bmploader.cpp
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=4/20=20%
+#  recipe to execute (from 'Makefile', line 368):
+	$(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+run: build
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 382):
+	$(EXEC) ./imageDenoising
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 385):
+	rm -f imageDenoising bmploader.o imageDenoising.o imageDenoisingGL.o
+	rm -rf ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)/imageDenoising
+
+check.deps:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 362):
+	@echo "Sample will be waived due to the above missing dependencies"
+
+# Not a target:
+findgllib.mk:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-21 16:34:49
+#  File has been updated.
+#  Successfully updated.
+
+imageDenoisingGL.o: imageDenoisingGL.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 374):
+	$(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
+
+imageDenoising: bmploader.o imageDenoising.o imageDenoisingGL.o
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/10=0%
+#  recipe to execute (from 'Makefile', line 377):
+	$(EXEC) $(NVCC) $(ALL_LDFLAGS) $(GENCODE_FLAGS) -o $@ $+ $(LIBRARIES)
+	$(EXEC) mkdir -p ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)
+	$(EXEC) cp $@ ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)
+
+imageDenoising.o: imageDenoising.cu
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 371):
+	$(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
+
+# files hash-table stats:
+# Load=17/1024=2%, Rehash=0, Collisions=0/42=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 31 / storage = 408 B / avg = 13 B
+# current buf: size = 8162 B / used = 408 B / count = 31 / avg = 13 B
+
+# strcache performance: lookups = 59 / hit rate = 47%
+# hash-table stats:
+# Load=31/8192=0%, Rehash=0, Collisions=1/59=2%
+# Finished Make data base on Mon Jan 10 15:59:14 2022
+
+ 
