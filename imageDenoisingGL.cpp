@@ -1,3 +1,31 @@
+
+Skip to content
+Pull requests
+Issues
+Marketplace
+Explore
+@sriramcu
+NVIDIA /
+cuda-samples
+Public
+
+Code
+Issues 32
+Pull requests 9
+Actions
+Projects
+Wiki
+Security
+
+    Insights
+
+cuda-samples/Samples/imageDenoising/imageDenoisingGL.cpp
+@Ru7w1k
+Ru7w1k add and update samples for CUDA 11.5
+Latest commit 1f76a2d on 21 Oct 2021
+History
+1 contributor
+560 lines (455 sloc) 16.3 KB
 /* Copyright (c) 2021, NVIDIA CORPORATION. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -116,6 +144,23 @@ char **pArgv = NULL;
 
 void cleanup();
 
+void computeFPS() {
+  frameCount++;
+  fpsCount++;
+
+  if (fpsCount == fpsLimit) {
+    char fps[256];
+    float ifps = 1.f / (sdkGetAverageTimerValue(&timer) / 1000.f);
+    sprintf(fps, "<%s>: %3.1f fps", filterMode[g_Kernel], ifps);
+
+    glutSetWindowTitle(fps);
+    fpsCount = 0;
+
+    // fpsLimit = (int)MAX(ifps, 1.f);
+    sdkResetTimer(&timer);
+  }
+}
+
 void runImageFilters(TColor *d_dst) {
   switch (g_Kernel) {
     case 0:
@@ -160,34 +205,311 @@ void runImageFilters(TColor *d_dst) {
 }
 
 void displayFunc(void) {
+  sdkStartTimer(&timer);
   TColor *d_dst = NULL;
   size_t num_bytes;
+
+  if (frameCounter++ == 0) {
+    sdkResetTimer(&timer);
+  }
 
   checkCudaErrors(cudaGraphicsMapResources(1, &cuda_pbo_resource, 0));
   getLastCudaError("cudaGraphicsMapResources failed");
   checkCudaErrors(cudaGraphicsResourceGetMappedPointer(
       (void **)&d_dst, &num_bytes, cuda_pbo_resource));
   getLastCudaError("cudaGraphicsResourceGetMappedPointer failed");
-  g_Kernel=2;
+
   runImageFilters(d_dst);
+
   checkCudaErrors(cudaGraphicsUnmapResources(1, &cuda_pbo_resource, 0));
+
+  // Common display code path
+  {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, imageW, imageH, GL_RGBA,
+                    GL_UNSIGNED_BYTE, BUFFER_DATA(0));
+    glBegin(GL_TRIANGLES);
+    glTexCoord2f(0, 0);
+    glVertex2f(-1, -1);
+    glTexCoord2f(2, 0);
+    glVertex2f(+3, -1);
+    glTexCoord2f(0, 2);
+    glVertex2f(-1, +3);
+    glEnd();
+    glFinish();
+  }
+
+  if (frameCounter == frameN) {
+    frameCounter = 0;
+
+    if (g_FPS) {
+      printf("FPS: %3.1f\n", frameN / (sdkGetTimerValue(&timer) * 0.001));
+      g_FPS = false;
+    }
+  }
+
+  glutSwapBuffers();
+  glutReportErrors();
+
+  sdkStopTimer(&timer);
+
+  computeFPS();
+}
+
+void timerEvent(int value) {
+  if (glutGetWindow()) {
+    glutPostRedisplay();
+    glutTimerFunc(REFRESH_DELAY, timerEvent, 0);
+  }
+}
+
+void keyboard(unsigned char k, int /*x*/, int /*y*/) {
+  switch (k) {
+    case 27:
+    case 'q':
+    case 'Q':
+#if defined(__APPLE__) || defined(MACOSX)
+      exit(EXIT_SUCCESS);
+#else
+      glutDestroyWindow(glutGetWindow());
+      return;
+#endif
+
+    case '1':
+      printf("Passthrough.\n");
+      g_Kernel = 0;
+      break;
+
+    case '2':
+      printf("KNN method \n");
+      g_Kernel = 1;
+      break;
+
+    case '3':
+      printf("NLM method\n");
+      g_Kernel = 2;
+      break;
+
+    case '4':
+      printf("Quick NLM(NLM2) method\n");
+      g_Kernel = 3;
+      break;
+
+    case '*':
+      printf(g_Diag ? "LERP highlighting mode.\n" : "Normal mode.\n");
+      g_Diag = !g_Diag;
+      break;
+
+    case 'n':
+      printf("Decrease noise level.\n");
+      knnNoise -= noiseStep;
+      nlmNoise -= noiseStep;
+      break;
+
+    case 'N':
+      printf("Increase noise level.\n");
+      knnNoise += noiseStep;
+      nlmNoise += noiseStep;
+      break;
+
+    case 'l':
+      printf("Decrease LERP quotient.\n");
+      lerpC = MAX(lerpC - lerpStep, 0.0f);
+      break;
+
+    case 'L':
+      printf("Increase LERP quotient.\n");
+      lerpC = MIN(lerpC + lerpStep, 1.0f);
+      break;
+
+    case 'f':
+    case 'F':
+      g_FPS = true;
+      break;
+
+    case '?':
+      printf("lerpC = %5.5f\n", lerpC);
+      printf("knnNoise = %5.5f\n", knnNoise);
+      printf("nlmNoise = %5.5f\n", nlmNoise);
+      break;
+  }
+}
+
+int initGL(int *argc, char **argv) {
+  printf("Initializing GLUT...\n");
+  glutInit(argc, argv);
+  glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
+  glutInitWindowSize(imageW, imageH);
+  glutInitWindowPosition(512 - imageW / 2, 384 - imageH / 2);
+  glutCreateWindow(argv[0]);
+  glutDisplayFunc(displayFunc);
+  glutKeyboardFunc(keyboard);
+  glutTimerFunc(REFRESH_DELAY, timerEvent, 0);
+  printf("OpenGL window created.\n");
+
+#if defined(__APPLE__) || defined(MACOSX)
+  atexit(cleanup);
+#else
+  glutCloseFunc(cleanup);
+#endif
+
+  if (!isGLVersionSupported(1, 5) ||
+      !areGLExtensionsSupported(
+          "GL_ARB_vertex_buffer_object GL_ARB_pixel_buffer_object")) {
+    fprintf(stderr, "Error: failed to get minimal extensions for demo\n");
+    fprintf(stderr, "This sample requires:\n");
+    fprintf(stderr, "  OpenGL version 1.5\n");
+    fprintf(stderr, "  GL_ARB_vertex_buffer_object\n");
+    fprintf(stderr, "  GL_ARB_pixel_buffer_object\n");
+    fflush(stderr);
+    return false;
+  }
+
+  return 0;
+}
+
+// shader for displaying floating-point texture
+static const char *shader_code =
+    "!!ARBfp1.0\n"
+    "TEX result.color, fragment.texcoord, texture[0], 2D; \n"
+    "END";
+
+GLuint compileASMShader(GLenum program_type, const char *code) {
+  GLuint program_id;
+  glGenProgramsARB(1, &program_id);
+  glBindProgramARB(program_type, program_id);
+  glProgramStringARB(program_type, GL_PROGRAM_FORMAT_ASCII_ARB,
+                     (GLsizei)strlen(code), (GLubyte *)code);
+
+  GLint error_pos;
+  glGetIntegerv(GL_PROGRAM_ERROR_POSITION_ARB, &error_pos);
+
+  if (error_pos != -1) {
+    const GLubyte *error_string;
+    error_string = glGetString(GL_PROGRAM_ERROR_STRING_ARB);
+    fprintf(stderr, "Program error at position: %d\n%s\n", (int)error_pos,
+            error_string);
+    return 0;
+  }
+
+  return program_id;
+}
+
+void initOpenGLBuffers() {
+  printf("Creating GL texture...\n");
+  glEnable(GL_TEXTURE_2D);
+  glGenTextures(1, &gl_Tex);
+  glBindTexture(GL_TEXTURE_2D, gl_Tex);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, imageW, imageH, 0, GL_RGBA,
+               GL_UNSIGNED_BYTE, h_Src);
+  printf("Texture created.\n");
+
+  printf("Creating PBO...\n");
+  glGenBuffers(1, &gl_PBO);
+  glBindBuffer(GL_PIXEL_UNPACK_BUFFER_ARB, gl_PBO);
+  glBufferData(GL_PIXEL_UNPACK_BUFFER_ARB, imageW * imageH * 4, h_Src,
+               GL_STREAM_COPY);
+  // While a PBO is registered to CUDA, it can't be used
+  // as the destination for OpenGL drawing calls.
+  // But in our particular case OpenGL is only used
+  // to display the content of the PBO, specified by CUDA kernels,
+  // so we need to register/unregister it only once.
+  // DEPRECATED: checkCudaErrors(cudaGLRegisterBufferObject(gl_PBO) );
+  checkCudaErrors(cudaGraphicsGLRegisterBuffer(
+      &cuda_pbo_resource, gl_PBO, cudaGraphicsMapFlagsWriteDiscard));
+  GLenum gl_error = glGetError();
+
+  if (gl_error != GL_NO_ERROR) {
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
+    char tmpStr[512];
+    // NOTE: "%s(%i) : " allows Visual Studio to directly jump to the file at
+    // the right line when the user double clicks on the error line in the
+    // Output pane. Like any compile error.
+    sprintf_s(tmpStr, 255, "\n%s(%i) : GL Error : %s\n\n", __FILE__, __LINE__,
+              gluErrorString(gl_error));
+    OutputDebugString(tmpStr);
+#endif
+    fprintf(stderr, "GL Error in file '%s' in line %d :\n", __FILE__, __LINE__);
+    fprintf(stderr, "%s\n", gluErrorString(gl_error));
+    exit(EXIT_FAILURE);
+  }
+
+  printf("PBO created.\n");
+
+  // load shader program
+  shader = compileASMShader(GL_FRAGMENT_PROGRAM_ARB, shader_code);
 }
 
 void cleanup() {
   free(h_Src);
   checkCudaErrors(CUDA_FreeArray());
   checkCudaErrors(cudaGraphicsUnregisterResource(cuda_pbo_resource));
+
   glDeleteProgramsARB(1, &shader);
+
+  sdkDeleteTimer(&timer);
 }
 
+void runAutoTest(int argc, char **argv, const char *filename,
+                 int kernel_param) {
+  printf("[%s] - (automated testing w/ readback)\n", sSDKsample);
 
+  int devID = findCudaDevice(argc, (const char **)argv);
+
+  // First load the image, so we know what the size of the image (imageW and
+  // imageH)
+  printf("Allocating host and CUDA memory and loading image file...\n");
+  const char *image_path = sdkFindFilePath("portrait_noise.bmp", argv[0]);
+
+  if (image_path == NULL) {
+    printf(
+        "imageDenoisingGL was unable to find and load image file "
+        "<portrait_noise.bmp>.\nExiting...\n");
+    exit(EXIT_FAILURE);
+  }
+
+  LoadBMPFile(&h_Src, &imageW, &imageH, image_path);
+  printf("Data init done.\n");
+
+  checkCudaErrors(CUDA_MallocArray(&h_Src, imageW, imageH));
+
+  TColor *d_dst = NULL;
+  unsigned char *h_dst = NULL;
+  checkCudaErrors(
+      cudaMalloc((void **)&d_dst, imageW * imageH * sizeof(TColor)));
+  h_dst = (unsigned char *)malloc(imageH * imageW * 4);
+
+  {
+    g_Kernel = kernel_param;
+    printf("[AutoTest]: %s <%s>\n", sSDKsample, filterMode[g_Kernel]);
+
+    runImageFilters(d_dst);
+
+    checkCudaErrors(cudaDeviceSynchronize());
+
+    checkCudaErrors(cudaMemcpy(h_dst, d_dst, imageW * imageH * sizeof(TColor),
+                               cudaMemcpyDeviceToHost));
+    sdkSavePPM4ub(filename, h_dst, imageW, imageH);
+  }
+
+  checkCudaErrors(CUDA_FreeArray());
+  free(h_Src);
+
+  checkCudaErrors(cudaFree(d_dst));
+  free(h_dst);
+
+  printf("\n[%s] -> Kernel %d, Saved: %s\n", sSDKsample, kernel_param,
+         filename);
+
+  exit(g_TotalErrors == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+}
 
 int main(int argc, char **argv) {
-  if(argc!=3)
-  {
-    printf("Format: ./imageDenoising filename")
-    exit(-1);
-  }
   char *dump_file = NULL;
 
 #if defined(__linux__)
@@ -227,9 +549,7 @@ int main(int argc, char **argv) {
     // First load the image, so we know what the size of the image (imageW and
     // imageH)
     printf("Allocating host and CUDA memory and loading image file...\n");
-    const char *image_path = sdkFindFilePath(argv[1], argv[0]); 
-    //pass input image file as argument
-
+    const char *image_path = sdkFindFilePath("portrait_noise.bmp", argv[0]);
 
     if (image_path == NULL) {
       printf(
@@ -238,16 +558,31 @@ int main(int argc, char **argv) {
       exit(EXIT_FAILURE);
     }
 
-    LoadBMPFile(&h_Src, &imageW, &imageH, image_path);  
-    // calculate image width and height, initialise img pointer
-    
+    LoadBMPFile(&h_Src, &imageW, &imageH, image_path);
     printf("Data init done.\n");
 
-
+    initGL(&argc, argv);
     findCudaDevice(argc, (const char **)argv);
 
     checkCudaErrors(CUDA_MallocArray(&h_Src, imageW, imageH));
 
+    initOpenGLBuffers();
   }
 
+  printf("Starting GLUT main loop...\n");
+  printf("Press [1] to view noisy image\n");
+  printf("Press [2] to view image restored with knn filter\n");
+  printf("Press [3] to view image restored with nlm filter\n");
+  printf("Press [4] to view image restored with modified nlm filter\n");
+  printf(
+      "Press [*] to view smooth/edgy areas [RED/BLUE] Ct's when a filter is "
+      "active\n");
+  printf("Press [f] to print frame rate\n");
+  printf("Press [?] to print Noise and Lerp Ct's\n");
+  printf("Press [q] to exit\n");
+
+  sdkCreateTimer(&timer);
+  sdkStartTimer(&timer);
+
+  glutMainLoop();
 }
