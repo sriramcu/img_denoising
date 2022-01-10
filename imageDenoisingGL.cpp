@@ -485,7 +485,7 @@ int main(int argc, char **argv) {
   g_Kernel = atoi(argv[1]);
   char *dump_file = NULL;
   dump_file[0] = 'M';
-  print("%s",dump_file);
+  printf("%s",dump_file);
 #if defined(__linux__)
   setenv("DISPLAY", ":0", 0);
 #endif
