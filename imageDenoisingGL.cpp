@@ -491,8 +491,17 @@ int main(int argc, char **argv) {
   char *ptr;
   g_Kernel = strtol(argv[1], &ptr, 10);
   char dump_file[100] = "";
-  strcpy(dump_file, sReference[g_Kernel]);
-  dump_file[0] = 'R';
+  strcpy(dump_file, argv[2]);
+  int i;
+  for(i=0;i<100;i++)
+  {
+    if(dump_file[i]=='.')
+      dump_file[i] = '_';
+  }
+  strcat(dump_file, "_");
+  strcat(dump_file, sReference[g_Kernel]);
+
+
   printf("%s\n",dump_file);
 #if defined(__linux__)
   setenv("DISPLAY", ":0", 0);
