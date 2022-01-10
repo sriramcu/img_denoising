@@ -539,25 +539,28 @@ int main(int argc, char **argv) {
     checkCudaErrors(CUDA_MallocArray(&h_Src, imageW, imageH));
 
     //initOpenGLBuffers();
+    g_Kernel = 2;
     TColor *d_dst = NULL;
+    printf("Penultimate line of the program");
     runImageFilters(d_dst);
+    printf("Last line of the program");
     
   }
 
-  printf("Starting GLUT main loop...\n");
-  printf("Press [1] to view noisy image\n");
-  printf("Press [2] to view image restored with knn filter\n");
-  printf("Press [3] to view image restored with nlm filter\n");
-  printf("Press [4] to view image restored with modified nlm filter\n");
-  printf(
-      "Press [*] to view smooth/edgy areas [RED/BLUE] Ct's when a filter is "
-      "active\n");
-  printf("Press [f] to print frame rate\n");
-  printf("Press [?] to print Noise and Lerp Ct's\n");
-  printf("Press [q] to exit\n");
+  // printf("Starting GLUT main loop...\n");
+  // printf("Press [1] to view noisy image\n");
+  // printf("Press [2] to view image restored with knn filter\n");
+  // printf("Press [3] to view image restored with nlm filter\n");
+  // printf("Press [4] to view image restored with modified nlm filter\n");
+  // printf(
+  //     "Press [*] to view smooth/edgy areas [RED/BLUE] Ct's when a filter is "
+  //     "active\n");
+  // printf("Press [f] to print frame rate\n");
+  // printf("Press [?] to print Noise and Lerp Ct's\n");
+  // printf("Press [q] to exit\n");
 
   sdkCreateTimer(&timer);
   sdkStartTimer(&timer);
 
-  glutMainLoop();
+  //glutMainLoop();
 }
