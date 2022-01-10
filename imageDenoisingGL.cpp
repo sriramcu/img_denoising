@@ -436,7 +436,9 @@ void runAutoTest(int argc, char **argv, const char *filename,
   // First load the image, so we know what the size of the image (imageW and
   // imageH)
   printf("Allocating host and CUDA memory and loading image file...\n");
-  const char *image_path = sdkFindFilePath("portrait_noise.bmp", argv[0]);
+  //const char *image_path = sdkFindFilePath("portrait_noise.bmp", argv[0]);
+  const char *image_path = sdkFindFilePath(argv[1], argv[0]);
+
 
   if (image_path == NULL) {
     printf(
@@ -487,7 +489,7 @@ int main(int argc, char **argv) {
   char dump_file[100] = "";
   strcpy(dump_file, sReference[g_Kernel]);
   dump_file[0] = 'M';
-  printf("%s",dump_file);
+  printf("%s\n",dump_file);
 #if defined(__linux__)
   setenv("DISPLAY", ":0", 0);
 #endif
@@ -496,6 +498,8 @@ int main(int argc, char **argv) {
   pArgv = argv;
 
   printf("%s Starting...\n\n", sSDKsample);
+  runAutoTest(argc, argv, dump_file, 1);
+
 
   if (checkCmdLineFlag(argc, (const char **)argv, "file")) {
     getCmdLineArgumentString(argc, (const char **)argv, "file",
@@ -508,8 +512,8 @@ int main(int argc, char **argv) {
     }
 
     runAutoTest(argc, argv, dump_file, kernel);
-  } 
-  
+  }  
+    
   else {
     printf("[%s]\n", sSDKsample);
 
