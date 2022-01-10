@@ -294,7 +294,7 @@ ifeq ($(TARGET_OS),darwin)
  ALL_LDFLAGS += -Xlinker -framework -Xlinker GLUT
 else
  LIBRARIES += $(GLLINK)
- LIBRARIES += -lGL -lGLU -lglut
+ LIBRARIES += -lGL -lGLU -lglut -lGLdispatch
 endif
 
 #Detect if installed version of GCC supports required C++11
