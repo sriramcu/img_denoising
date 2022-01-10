@@ -482,8 +482,10 @@ void runAutoTest(int argc, char **argv, const char *filename,
 }
 
 int main(int argc, char **argv) {
+  g_Kernel = atoi(argv[1]);
   char *dump_file = NULL;
-
+  dump_file[0] = 'M';
+  print("%s",dump_file);
 #if defined(__linux__)
   setenv("DISPLAY", ":0", 0);
 #endif
@@ -504,7 +506,9 @@ int main(int argc, char **argv) {
     }
 
     runAutoTest(argc, argv, dump_file, kernel);
-  } else {
+  } 
+  
+  else {
     printf("[%s]\n", sSDKsample);
 
     // use command-line specified CUDA device, otherwise use device with highest
