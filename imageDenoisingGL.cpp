@@ -482,8 +482,9 @@ void runAutoTest(int argc, char **argv, const char *filename,
 }
 
 int main(int argc, char **argv) {
-  g_Kernel = atoi(argv[1]);
-  char *dump_file = NULL;
+  char *ptr;
+  g_Kernel = strtol(argv[1], &ptr, 10);
+  char dump_file[100] = "";
   strcpy(dump_file, sReference[g_Kernel]);
   dump_file[0] = 'M';
   printf("%s",dump_file);
