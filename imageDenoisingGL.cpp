@@ -48,8 +48,8 @@ bool g_Diag = false;
 StopWatchInterface *timer = NULL;
 
 // Algorithms global parameters
-const float noiseStep = 0.025f;
-const float lerpStep = 0.025f;
+float noiseStep = 0.025f;
+float lerpStep = 0.025f;
 static float knnNoise = 0.32f;
 static float nlmNoise = 1.45f;
 static float lerpC = 0.2f;
@@ -190,8 +190,8 @@ void runDenoising(int argc, char **argv, const char *filename,
 
 
 int main(int argc, char **argv) {
-  char *ptr;
-  g_Kernel = strtol(argv[1], &ptr, 10);
+
+  g_Kernel = strtol(argv[1], NULL, 10);
   char dump_file[100] = "";
   strcpy(dump_file, argv[2]);
   int i;
@@ -202,9 +202,17 @@ int main(int argc, char **argv) {
   }
   strcat(dump_file, "_");
   strcat(dump_file, sReference[g_Kernel]);
-
-
   printf("%s\n",dump_file);
+
+  noiseStep = strtof(argv[2],NULL);
+  lerpStep = strtof(argv[3],NULL);
+  knnNoise = strtof(argv[4],NULL);
+  nlmNoise = strtof(argv[5],NULL);
+  lerpC = strtof(argv[6],NULL);
+
+  printf("%f %f %f %f %f\n",noiseStep,lerpStep, knnNoise, nlmNoise, lerpC);
+
+
 #if defined(__linux__)
   setenv("DISPLAY", ":0", 0);
 #endif
