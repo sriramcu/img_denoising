@@ -204,11 +204,11 @@ int main(int argc, char **argv) {
   strcat(dump_file, sReference[g_Kernel]);
   printf("%s\n",dump_file);
 
-  noiseStep = strtof(argv[2],NULL);
-  lerpStep = strtof(argv[3],NULL);
-  knnNoise = strtof(argv[4],NULL);
-  nlmNoise = strtof(argv[5],NULL);
-  lerpC = strtof(argv[6],NULL);
+  noiseStep = strtof(argv[3],NULL);
+  lerpStep = strtof(argv[4],NULL);
+  knnNoise = strtof(argv[5],NULL);
+  nlmNoise = strtof(argv[6],NULL);
+  lerpC = strtof(argv[7],NULL);
 
   printf("%f %f %f %f %f\n",noiseStep,lerpStep, knnNoise, nlmNoise, lerpC);
 

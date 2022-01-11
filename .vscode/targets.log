@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jan 10 20:37:32 2022
+# Make data base, printed on Tue Jan 11 10:09:55 2022
 
 # Variables
 
@@ -16,15 +16,15 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from 'findgllib.mk', line 59)
+# makefile (from 'findgllib.mk', line 25)
 CENTOS = $(shell echo $(DISTRO) | grep -i centos      >/dev/null 2>&1; echo $$?)
 # environment
 DESKTOP_SESSION = mate
 # default
 .SHELLFLAGS := -c
-# makefile (from 'Makefile', line 344)
+# makefile (from 'Makefile', line 311)
 GENCODE_FLAGS = -gencode arch=compute_35,code=sm_35 -gencode arch=compute_37,code=sm_37 -gencode arch=compute_50,code=sm_50 -gencode arch=compute_52,code=sm_52 -gencode arch=compute_60,code=sm_60 -gencode arch=compute_61,code=sm_61 -gencode arch=compute_70,code=sm_70 -gencode arch=compute_75,code=sm_75 -gencode arch=compute_80,code=sm_80 -gencode arch=compute_86,code=sm_86 -gencode arch=compute_$(HIGHEST_SM),code=compute_$(HIGHEST_SM)
-# makefile (from 'findgllib.mk', line 113)
+# makefile (from 'findgllib.mk', line 79)
 GLULIB := /usr/lib/x86_64-linux-gnu/libGLU.so
 # environment
 XDG_SESSION_TYPE = x11
@@ -32,7 +32,7 @@ XDG_SESSION_TYPE = x11
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# makefile (from 'Makefile', line 281)
+# makefile (from 'Makefile', line 248)
 INCLUDES := -I. 
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
@@ -44,7 +44,7 @@ GDMSESSION = mate
 MAKE_VERSION := 4.1
 # makefile
 CURDIR := /home/sriram/imageDenoising
-# makefile (from 'findgllib.mk', line 84)
+# makefile (from 'findgllib.mk', line 50)
 GLLINK = -L/usr/lib/$(UBUNTU_PKG_NAME)
 # makefile
 SHELL = /bin/sh
@@ -54,7 +54,7 @@ GDM_LANG = en_US
 VTE_VERSION = 5202
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
-# makefile (from 'Makefile', line 83)
+# makefile (from 'Makefile', line 50)
 TARGET_SIZE := 64
 # environment
 _ = /usr/bin/code
@@ -66,7 +66,7 @@ XDG_CONFIG_DIRS = /etc/xdg/xdg-mate:/etc/xdg
 GTK_OVERLAY_SCROLLING = 0
 # makefile (from 'findgllib.mk', line 1)
 MAKEFILE_LIST :=  Makefile findgllib.mk
-# makefile (from 'Makefile', line 160)
+# makefile (from 'Makefile', line 127)
 NVCC := /usr/local/cuda/bin/nvcc -ccbin g++
 # automatic
 @F = $(notdir $@)
@@ -74,7 +74,7 @@ NVCC := /usr/local/cuda/bin/nvcc -ccbin g++
 GNUMAKEFLAGS := 
 # environment
 XDG_DATA_DIRS = /usr/share/mate:/usr/local/share:/usr/share:/var/lib/snapd/desktop
-# makefile (from 'Makefile', line 163)
+# makefile (from 'Makefile', line 130)
 NVCCFLAGS := -m64
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
@@ -82,7 +82,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 VSCODE_VERBOSE_LOGGING = true
 # environment
 QT_SCALE_FACTOR = 1
-# makefile (from 'Makefile', line 315)
+# makefile (from 'Makefile', line 282)
 IS_MIN_VERSION := 1
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
@@ -94,15 +94,15 @@ XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
 PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/sriram/Downloads/pycharm-community-2021.3.1/bin:/home/sriram/Downloads/pycharm-community-2021.3.1/bin
-# makefile (from 'findgllib.mk', line 124)
+# makefile (from 'findgllib.mk', line 90)
 HEADER_SEARCH_PATH = $(TARGET_FS)/usr/include
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
-# makefile (from 'findgllib.mk', line 38)
+# makefile (from 'findgllib.mk', line 4)
 DISTRO := ubuntu
 # environment
 SESSION_MANAGER = local/sriram-ThinkPad-E490:@/tmp/.ICE-unix/1456,unix/sriram-ThinkPad-E490:/tmp/.ICE-unix/1456
-# makefile (from 'Makefile', line 303)
+# makefile (from 'Makefile', line 270)
 space := $(subst ,, )
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
@@ -110,28 +110,28 @@ XDG_RUNTIME_DIR = /run/user/1000
 WINDOWID = 60817779
 # environment
 UBUNTU_MENUPROXY = 1
-# makefile (from 'findgllib.mk', line 83)
+# makefile (from 'findgllib.mk', line 49)
 GLPATH = /usr/lib/$(UBUNTU_PKG_NAME)
-# makefile (from 'findgllib.mk', line 56)
+# makefile (from 'findgllib.mk', line 22)
 UBUNTU = $(shell echo $(DISTRO) | grep -i ubuntu      >/dev/null 2>&1; echo $$?)
-# makefile (from 'findgllib.mk', line 81)
+# makefile (from 'findgllib.mk', line 47)
 UBUNTU_PKG_NAME = $(shell which dpkg >/dev/null 2>&1 && dpkg -l 'nvidia-*' | grep '^ii' | awk '{print $$2}' | head -1)
-# makefile (from 'Makefile', line 302)
+# makefile (from 'Makefile', line 269)
 empty := 
-# makefile (from 'Makefile', line 164)
+ 
+# makefile (from 'Makefile', line 131)
 CCFLAGS := 
 # environment
 VSCODE_LOG_STACK = false
 # environment
 VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=3fb89862-c164-4bf8-81b1-01ca89e49ad9&iid=3fb89862-c164-4bf8-81b1-01ca89e49ad9&sid=3fb89862-c164-4bf8-81b1-01ca89e49ad9","uploadToServer":true}
-# makefile (from 'Makefile', line 165)
+# makefile (from 'Makefile', line 132)
 LDFLAGS := 
-# makefile (from 'findgllib.mk', line 112)
+# makefile (from 'findgllib.mk', line 78)
 GLLIB := /usr/lib/x86_64-linux-gnu/libGL.so
- 
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# makefile (from 'Makefile', line 348)
+# makefile (from 'Makefile', line 315)
 ALL_CCFLAGS :=  -m64    --threads 0 --std=c++11
 # environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/sriram
@@ -147,15 +147,15 @@ SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 DISPLAY = :0.0
 # environment
 VSCODE_PIPE_LOGGING = true
-# makefile (from 'Makefile', line 304)
+# makefile (from 'Makefile', line 271)
 GCCVERSIONSTRING := 7
-# makefile (from 'Makefile', line 233)
+# makefile (from 'Makefile', line 200)
 CUDA_INSTALL_TARGET_DIR := 
 # environment
 PWD = /home/sriram/imageDenoising
 # environment
 QT_QPA_PLATFORMTHEME = gtk2
-# makefile (from 'Makefile', line 312)
+# makefile (from 'Makefile', line 279)
 GCCVERSION := 77700
 # environment
 XDG_SEAT = seat0
@@ -175,13 +175,13 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 VSCODE_CLI = 1
 # environment
 VSCODE_CODE_CACHE_PATH = /home/sriram/.config/Code/CachedData/899d46d82c4c95423fb7e10e68eba52050e30ba3
-# makefile (from 'findgllib.mk', line 132)
+# makefile (from 'findgllib.mk', line 98)
 GLUHEADER := /usr/include/GL/glu.h
 # environment
 LOGNAME = sriram
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
-# makefile (from 'Makefile', line 266)
+# makefile (from 'Makefile', line 233)
 SAMPLE_ENABLED := 1
 # environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
@@ -193,7 +193,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 XDG_VTNR = 7
 # environment
 MAKELEVEL := 0
-# makefile (from 'Makefile', line 159)
+# makefile (from 'Makefile', line 126)
 HOST_COMPILER = g++
 # environment
 COLORTERM = truecolor
@@ -211,7 +211,7 @@ COMPIZ_CONFIG_PROFILE = mate
 XDG_SESSION_ID = c2
 # environment
 USER = sriram
-# makefile (from 'Makefile', line 109)
+# makefile (from 'Makefile', line 76)
 HOST_OS := linux
 # makefile
 .DEFAULT_GOAL := all
@@ -219,13 +219,13 @@ HOST_OS := linux
 XDG_CURRENT_DESKTOP = MATE
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
-# makefile (from 'Makefile', line 110)
+# makefile (from 'Makefile', line 77)
 TARGET_OS = $(HOST_OS)
 # default
 MAKE_COMMAND := make
 # environment
 OLDPWD = /home/sriram
-# makefile (from 'Makefile', line 329)
+# makefile (from 'Makefile', line 296)
 SMS = 35 37 50 52 60 61 70 75 80 86
 # default
 .VARIABLES := 
@@ -251,39 +251,39 @@ BREAKPAD_DUMP_LOCATION = /home/sriram/.config/Code/exthost Crash Reports
 GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
-# makefile (from 'findgllib.mk', line 87)
+# makefile (from 'findgllib.mk', line 53)
 DFLT_PATH = /usr/lib
 # environment
 QT_ACCESSIBILITY = 1
-# makefile (from 'Makefile', line 342)
+# makefile (from 'Makefile', line 309)
 HIGHEST_SM := 86
-# makefile (from 'findgllib.mk', line 57)
+# makefile (from 'findgllib.mk', line 23)
 FEDORA = $(shell echo $(DISTRO) | grep -i fedora      >/dev/null 2>&1; echo $$?)
 # default
 MAKEFILES := 
-# makefile (from 'Makefile', line 73)
+# makefile (from 'Makefile', line 40)
 HOST_ARCH := x86_64
 # automatic
 <F = $(notdir $<)
-# makefile (from 'findgllib.mk', line 58)
+# makefile (from 'findgllib.mk', line 24)
 RHEL = $(shell echo $(DISTRO) | grep -i 'red\|rhel' >/dev/null 2>&1; echo $$?)
 # environment
 ELECTRON_RUN_AS_NODE = 1
-# makefile (from 'findgllib.mk', line 60)
+# makefile (from 'findgllib.mk', line 26)
 SUSE = $(shell echo $(DISTRO) | grep -i 'suse\|sles' >/dev/null 2>&1; echo $$?)
 # environment
 LC_ALL = C
-# makefile (from 'Makefile', line 297)
+# makefile (from 'Makefile', line 264)
 LIBRARIES :=  -L/usr/lib/nvidia-prime -lGL -lGLU -lglut -lGLdispatch
-# makefile (from 'Makefile', line 74)
+# makefile (from 'Makefile', line 41)
 TARGET_ARCH = $(HOST_ARCH)
-# makefile (from 'findgllib.mk', line 131)
+# makefile (from 'findgllib.mk', line 97)
 GLHEADER := /usr/include/GL/gl.h
 # automatic
 ^F = $(notdir $^)
-# makefile (from 'Makefile', line 257)
+# makefile (from 'Makefile', line 224)
 BUILD_TYPE := release
-# makefile (from 'Makefile', line 35)
+# makefile (from 'Makefile', line 2)
 CUDA_PATH = /usr/local/cuda
 # default
 SUFFIXES := 
@@ -299,7 +299,7 @@ MATE_DESKTOP_SESSION_ID = this-is-deprecated
 LANG = C
 # environment
 TERM = xterm
-# makefile (from 'Makefile', line 277)
+# makefile (from 'Makefile', line 244)
 ALL_LDFLAGS :=   -m64     
 # environment
 VSCODE_PID = 16733
@@ -312,21 +312,21 @@ VSCODE_PID = 16733
 
 # Directories
 
-# . (device 2069, inode 5770772): 25 files, no impossibilities.
+# . (device 2069, inode 5770772): 26 files, no impossibilities.
 
-# 25 files, no impossibilities in 1 directories.
+# 26 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 # No implicit rules.
 
+ 
 # Files
 
 # Not a target:
 bmploader.cpp:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-01-10 19:48:32.428862912
+#  Last modified 2022-01-11 09:52:44.947527398
 #  File has been updated.
 #  Successfully updated.
 
@@ -348,7 +348,7 @@ all: build
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-10 20:33:17.119655163
+#  Last modified 2022-01-11 09:54:39.562416998
 #  File has been updated.
 #  Successfully updated.
 
@@ -401,7 +401,7 @@ bmploader.o: bmploader.cpp
 # ? := bmploader.cpp
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=4/20=20%
-#  recipe to execute (from 'Makefile', line 369):
+#  recipe to execute (from 'Makefile', line 336):
 	$(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
 
 # Not a target:
@@ -414,14 +414,14 @@ run: build
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 383):
+#  recipe to execute (from 'Makefile', line 350):
 	$(EXEC) ./imageDenoising
 
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 386):
+#  recipe to execute (from 'Makefile', line 353):
 	rm -f imageDenoising bmploader.o imageDenoising.o imageDenoisingGL.o
 	rm -rf ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)/imageDenoising
 
@@ -429,13 +429,13 @@ check.deps:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 365):
+#  recipe to execute (from 'Makefile', line 332):
 	@echo "Sample is ready - all dependencies have been met"
 
 # Not a target:
 findgllib.mk:
 #  Implicit rule search has been done.
-#  Last modified 2021-10-21 16:34:49
+#  Last modified 2022-01-11 09:53:08.00408927
 #  File has been updated.
 #  Successfully updated.
 
@@ -443,7 +443,7 @@ imageDenoisingGL.o: imageDenoisingGL.cpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 375):
+#  recipe to execute (from 'Makefile', line 342):
 	$(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
 
 imageDenoising: bmploader.o imageDenoising.o imageDenoisingGL.o
@@ -453,7 +453,7 @@ imageDenoising: bmploader.o imageDenoising.o imageDenoisingGL.o
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/10=0%
-#  recipe to execute (from 'Makefile', line 378):
+#  recipe to execute (from 'Makefile', line 345):
 	$(EXEC) $(NVCC) $(ALL_LDFLAGS) $(GENCODE_FLAGS) -o $@ $+ $(LIBRARIES)
 	$(EXEC) mkdir -p ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)
 	$(EXEC) cp $@ ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)
@@ -462,7 +462,7 @@ imageDenoising.o: imageDenoising.cu
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 372):
+#  recipe to execute (from 'Makefile', line 339):
 	$(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
 
 # files hash-table stats:
@@ -473,12 +473,13 @@ imageDenoising.o: imageDenoising.cu
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 39 / storage = 516 B / avg = 13 B
-# current buf: size = 8162 B / used = 516 B / count = 39 / avg = 13 B
+# strcache buffers: 1 (0) / strings = 40 / storage = 530 B / avg = 13 B
+# current buf: size = 8162 B / used = 530 B / count = 40 / avg = 13 B
+ 
 
-# strcache performance: lookups = 67 / hit rate = 41%
+# strcache performance: lookups = 68 / hit rate = 41%
 # hash-table stats:
-# Load=39/8192=0%, Rehash=0, Collisions=1/67=1%
-# Finished Make data base on Mon Jan 10 20:37:32 2022
+# Load=40/8192=0%, Rehash=0, Collisions=1/68=1%
+# Finished Make data base on Tue Jan 11 10:09:55 2022
 
  
